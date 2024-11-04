@@ -2,6 +2,7 @@
 
 import { getHTTPClient } from "@/context/Global";
 import { useEffect } from "react";
+import VideoUploadForm from "./components/VideoUploadForm";
 
 export default function Page() {
   useEffect(() => {
@@ -20,5 +21,7 @@ export default function Page() {
     fetchData();
   })
 
-  return <h1>Hello, Next.js!</h1>
+  return (
+    <VideoUploadForm/>
+  )
 }
