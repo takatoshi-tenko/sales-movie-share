@@ -3,6 +3,7 @@
 import { getHTTPClient } from "@/context/Global";
 import { useEffect } from "react";
 import VideoUploadForm from "./components/VideoUploadForm";
+import User from "./components/User";
 
 export default function Page() {
   useEffect(() => {
@@ -22,6 +23,11 @@ export default function Page() {
   })
 
   return (
-    <VideoUploadForm/>
+    <>
+      <VideoUploadForm/>
+      <br/>
+      <br/>
+      <User/>
+    </>
   )
 }
