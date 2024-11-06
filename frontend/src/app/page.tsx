@@ -4,7 +4,7 @@ import { getHTTPClient } from "@/context/Global";
 import { useEffect } from "react";
 import VideoUploadForm from "./components/VideoUploadForm";
 import User from "./components/User";
-import { VideoList } from "./components/VideoList";
+import { FileList } from "./components/FileList";
 
 export default function Page() {
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function Page() {
         {/* 動画一覧 */}
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-3">動画一覧</h2>
-          <VideoList />
+          <FileList />
         </div>
 
         {/* ユーザー情報 */}
