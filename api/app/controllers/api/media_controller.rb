@@ -3,6 +3,35 @@ require 'aws-sdk-s3'
 
 module Api
   class MediaController < ApplicationController
+    def index
+      Aws.config.update({
+        region: ENV['AWS_REGION'],
+        credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
+      })
+
+      s3 = Aws::S3::Resource.new
+      bucket = s3.bucket(ENV['AWS_BUCKET'])
+
+      files = bucket.objects.map do |object|
+        presigned_url = object.presigned_url(:get, expires_in: 3600)
+        file_type = if object.key.match?(/\.(mp4|mov|avi|m4v)$/i)
+          'video'
+        elsif object.key.match?(/\.(jpg|jpeg|png|gif)$/i)
+          'image'
+        else
+          'unknown'
+        end
+
+        {
+          key: object.key,
+          url: presigned_url,
+          type: file_type
+        }
+      end
+
+      render json: files
+    end
+
     def create
       uploaded_video = params[:video]
       uploaded_image = params[:image]
