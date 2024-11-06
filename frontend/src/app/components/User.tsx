@@ -68,7 +68,7 @@ export default function User() {
 
   return (
     <>
-      <form onSubmit={onSubmit} className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md space-y-4" encType="multipart/form-data">
+      <form onSubmit={onSubmit} className="max-w-md p-6 bg-white rounded-lg shadow-md space-y-4" encType="multipart/form-data">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">名前</label>
         <input
